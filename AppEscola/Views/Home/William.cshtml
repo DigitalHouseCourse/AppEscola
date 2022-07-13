@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Meu Perfil";
+}
+
+<div style="background-color:#f2f3f4">
+    <h4>🎓 App Escola</h4>
+</div>
+
+<br />
+<br />
+
+<h3 class="fw-bold">#1 William Sant Anna</h3>
+<p class="fw-bold" style="color:black">31/08/90 <span style="color:gray"> (32 anos)</span></p>
+<p class="fw-bold">Rua Tribal, 68 - Recreio dos Bandeirantes, Rio de Janeiro</p>
+
+<br />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Matéria</th>
+            <th scope="col">1º</th>
+            <th scope="col">2º</th>
+            <th scope="col">3º</th>
+            <th scope="col">4º</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+
+    @model List<Notas>;
+
+@{
+        <tbody>
+            @foreach (var notas in Model)
+            {
+                if (@notas.status == "Aprovado" && @notas.nota1 > 6.5 && @notas.nota2 > 6.5 && @notas.nota3 > 6.5 && @notas.nota4 > 6.5)
+                {
+                    <tr class="table-success">
+                        <th scope="row">@notas.id</th>
+                        <td>@notas.materia</td>
+                        <td>@notas.nota1</td>
+                        <td>@notas.nota2</td>
+                        <td>@notas.nota3</td>
+                        <td>@notas.nota4</td>
+                        <td>@notas.status</td>
+                    </tr>
+                }
+            }
+       </tbody>
+    }
+</table>
